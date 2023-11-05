@@ -1,0 +1,62 @@
+package com.amol.Test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class FacebookGroup {
+	
+	String ExpectedTitle = "Create group | Facebook";	
+	
+	@Test
+	public void TestFacebook() throws Exception {
+		WebDriverManager.chromedriver().setup();
+		//WebDriver driver = new ChromeDriver();
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("--disable-notifications");
+		WebDriver driver = new ChromeDriver(option);
+
+		//Login to facebook.
+		driver.get("https://www.facebook.com");
+		driver.findElement(By.xpath("//*[@name='email']")).sendKeys("Enter your user name");
+		driver.findElement(By.id("pass")).sendKeys("Enter your password");
+		driver.findElement(By.name("login")).click();
+		driver.manage().window().maximize();
+		System.out.println("page title is " + driver.getTitle());
+		Thread.sleep(1000);
+		System.out.println("Login Sucessfull");
+		//driver.manage().window().minimize();
+		//driver.findElement(By.cssSelector("#mount_0_0_dw > div > div:nth-child(1) > div > div:nth-child(3) > div.xds687c.x1pi30zi.x1e558r4.xixxii4.x13vifvy.xzkaem6 > div.x6s0dn4.x78zum5.x15zctf7.x1s65kcs.x1n2onr6.x1ja2u2z > div:nth-child(4) > div.x9e5oc1 > span > span > div > svg > path")).click();
+		driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M12 1a3 3 ')]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//div[@role='option']//a[@role='link']//div[@class='x6s0dn4 x1q0q8m5 x1qhh985 xu3j5b3 xcfux6l x26u7qi xm0m39n x13fuv20 x972fbf x9f619 x78zum5 x1q0g3np x1iyjqo2 xs83m0k x1qughib xat24cr x11i5rnm x1mh8g0r xdj266r xeuugli x18d9i69 x1sxyh0 xurb0ha xexx8yu x1n2onr6 x1ja2u2z x1gg8mnh']//div[@class='x6s0dn4 xkh2ocl x1q0q8m5 x1qhh985 xu3j5b3 xcfux6l x26u7qi xm0m39n x13fuv20 x972fbf x9f619 x78zum5 x1q0g3np x1iyjqo2 xs83m0k x1qughib xat24cr x11i5rnm x1mh8g0r xdj266r x2lwn1j xeuugli x18d9i69 x4uap5 xkhd6sd xexx8yu x1n2onr6 x1ja2u2z']//div[@class='x1qjc9v5 x1q0q8m5 x1qhh985 xu3j5b3 xcfux6l x26u7qi xm0m39n x13fuv20 x972fbf x9f619 x78zum5 x1r8uery xdt5ytf x1iyjqo2 xs83m0k x1qughib xat24cr x11i5rnm x1mh8g0r xdj266r x2lwn1j xeuugli x4uap5 xkhd6sd xz9dl7a xsag5q8 x1n2onr6 x1ja2u2z']//div//span[@class='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xk50ysn xzsf02u x1yc453h'][normalize-space()='Groups']\r\n"
+				+ "")).click();
+		//Thread.sleep(2000);
+		//driver.findElement(By.xpath("(//div[@class='x1n2onr6 x1ja2u2z x78zum5 x2lah0s xl56j7k x6s0dn4 xozqiw3 x1q0g3np xi112ho x17zwfj4 x585lrc x1403ito x972fbf xcfux6l x1qhh985 xm0m39n x9f619 xn6708d x1ye3gou x1hr4nm9 x1r1pt67'])[1]")).click();
+		//driver.findElement(By.cssSelector("#mount_0_0_VI > div > div:nth-child(1) > div > div.x9f619.x1n2onr6.x1ja2u2z > div > div > div > div.x78zum5.xdt5ytf.x1t2pt76.x1n2onr6.x1ja2u2z.x10cihs4 > div.x9f619.x2lah0s.x1nhvcw1.x1qjc9v5.xozqiw3.x1q0g3np.x78zum5.x1iyjqo2.x1t2pt76.x1n2onr6.x1ja2u2z.x1h6rjhl > div.x9f619.x1n2onr6.x78zum5.xdt5ytf.x193iq5w.xeuugli.x2lah0s.x1t2pt76.x1xzczws.x1cvmir6.x1vjfegm > div > div.xb57i2i.x1q594ok.x5lxg6s.x78zum5.xdt5ytf.x6ikm8r.x1ja2u2z.x1pq812k.x1rohswg.xfk6m8.x1yqm8si.xjx87ck.x1l7klhg.x1iyjqo2.xs83m0k.x2lwn1j.xx8ngbg.xwo3gff.x1oyok0e.x1odjw0f.x1e4zzel.x1n2onr6.xq1qtft > div.x78zum5.xdt5ytf.x1iyjqo2.x1n2onr6 > div.x1e56ztr.x1gslohp > div > div.x1xmf6yo.xktsk01.xat24cr.x1d52u69 > a > div > div.x1o1ewxj.x3x9cwd.x1e5q0jg.x13rtm0m.x1ey2m1c.xds687c.xg01cxk.x47corl.x10l6tqk.x17qophe.x13vifvy.x1ebt8du.x19991ni.x1dhq9h.x1wpzbip")).click();
+		Thread.sleep(3000);
+		driver.navigate().to("https://www.facebook.com/groups/create/");
+		//driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div/div/label/div/div/input")).sendKeys("Test-Automation with Amol", Keys.ENTER);
+		driver.findElement(By.cssSelector("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > label:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)")).sendKeys("Test-Automation with Amol", Keys.ENTER);
+		Thread.sleep(3000);
+		
+		WebElement dropdown = driver.findElement(By.xpath("//*[@id=\":r13:\"]/div"));
+		//WebElement dropdown = driver.findElement(By.cssSelector(".xjyslct.xjbqb8w.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.xzsf02u.x78zum5.x1jchvi3.x1fcty0u.x132q4wb.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x1a2a7pz.x9desvi.x1pi30zi.x1a8lsjc.x1swvt13.x1n2onr6.x16tdsg8.xh8yej3.x1ja2u2z"));
+		dropdown.click();
+		
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("div[id=':r11:__0'] span[class='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xk50ysn xzsf02u x1yc453h']")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("span[class='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen x1s688f xtk6v10'] span[class='x1lliihq x6ikm8r x10wlt62 x1n2onr6 xlyipyv xuxw1ft']")).click();
+
+		Thread.sleep(9000);
+
+		driver.quit();
+	}
+}
