@@ -1,0 +1,107 @@
+package com.amol.Test;
+
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.testng.annotations.BeforeTest;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterTest;
+
+public class AnnotationsWithFacebook {
+	WebDriver driver;
+	@Test
+	public void f() throws Exception {
+		driver.navigate().to("https://www.facebook.com/groups/create/");
+		driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div/div/label/div/div/input")).sendKeys("Test-Automation with Amol123", Keys.ENTER);
+		Thread.sleep(3000);
+
+	//	WebElement dropdown = driver.findElement(By.xpath("//*[@id=\":r13:\"]/div"));
+		WebElement dropdown = driver.findElement(By.cssSelector("div[class='xamitd3 x1pi30zi'] i[class='x1b0d499 xep6ejk']"));
+
+		dropdown.click();
+
+		Thread.sleep(3000);
+		///driver.findElement(By.cssSelector("div[id=':r11:__0'] span[class='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xk50ysn xzsf02u x1yc453h']")).click();
+	//	driver.findElement(By.cssSelector("div[id=':r11:__0'] span[class='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xk50ysn xzsf02u x1yc453h']")).click();
+		//driver.findElement(By.cssSelector("div[id=':ro:__0'] i[class='x1b0d499 xep6ejk']")).click();
+      driver.findElement(By.xpath("//span[normalize-space()='Public']")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("span[class='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen x1s688f xtk6v10'] span[class='x1lliihq x6ikm8r x10wlt62 x1n2onr6 xlyipyv xuxw1ft']")).click();
+
+	}
+	@BeforeTest
+	public void beforeTest() throws Exception {
+		/*WebDriverManager.chromedriver().setup();
+		//WebDriver driver = new ChromeDriver();
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("--disable-notifications");
+		 driver = new ChromeDriver(option);
+
+		//Login to facebook.
+		driver.get("https://www.facebook.com");
+
+		driver.findElement(By.xpath("//*[@name='email']")).sendKeys("amolsdeore02@gmail.com");
+
+		driver.findElement(By.id("pass")).sendKeys("Amol@123");
+		driver.findElement(By.name("login")).click();
+		driver.manage().window().maximize(); */
+		
+		//DDT
+		 File file = new File("D:\\New folder\\DDT.xlsx");
+			FileInputStream fis = new FileInputStream(file);
+			XSSFWorkbook workbook = new XSSFWorkbook(fis);
+			XSSFSheet sheet = workbook.getSheetAt(0);
+			
+			String Password = sheet.getRow(1).getCell(0).getStringCellValue();
+			String Username = sheet.getRow(1).getCell(1).getStringCellValue();
+
+			//System.out.println(Password);
+			
+			
+			WebDriverManager.chromedriver().setup();
+			//WebDriver driver = new ChromeDriver();
+			ChromeOptions option = new ChromeOptions();
+			option.addArguments("--disable-notifications");
+			 driver = new ChromeDriver(option);
+
+			//Login to facebook.
+			driver.get("https://www.facebook.com");
+			
+			driver.findElement(By.xpath("//*[@name='email']")).sendKeys(Username);
+			
+			driver.findElement(By.id("pass")).sendKeys(Password);
+			driver.findElement(By.name("login")).click();
+			driver.manage().window().maximize();
+			System.out.println("page title is " + driver.getTitle());
+			Thread.sleep(2000);
+			System.out.println("Login Sucessfull");
+			String url = driver.getCurrentUrl();
+			System.out.println(url);
+			driver.findElement(By.xpath("//a[@aria-label='Home']")).click();
+			Thread.sleep(4000);
+			System.out.println(driver.getCurrentUrl());
+			workbook.close();
+			fis.close();
+	}
+
+	@AfterTest
+	public void afterTest() throws InterruptedException {
+		Thread.sleep(6000);
+		driver.quit(); 
+
+
+	}
+
+}
